@@ -1,4 +1,7 @@
 <script setup lang="ts" generic="TData, TValue">
+import type { ColumnDef } from '@tanstack/vue-table'
+import { FlexRender, getCoreRowModel, useVueTable } from '@tanstack/vue-table'
+
 import {
   Table,
   TableBody,
@@ -7,9 +10,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import type { ColumnDef } from '@tanstack/vue-table'
-
-import { FlexRender, getCoreRowModel, useVueTable } from '@tanstack/vue-table'
 
 const props = defineProps<{
   columns: ColumnDef<TData, TValue>[]
@@ -49,7 +49,11 @@ const table = useVueTable({
             :data-state="row.getIsSelected() ? 'selected' : undefined"
           >
             <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
-              <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
+              <slot :name="`cell-${cell.column.id}`" :cell="cell">
+                {{ cell.getValue() }}
+              </slot>
+
+              <!-- <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" /> -->
             </TableCell>
           </TableRow>
         </template>
@@ -62,3 +66,13 @@ const table = useVueTable({
     </Table>
   </div>
 </template>
+
+<!-- <style scoped>
+td {
+  @apply p-0;
+}
+
+td > * {
+  @apply p-4;
+}
+</style> -->
