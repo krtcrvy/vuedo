@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import SidebarLinks from '@/components/layout/SidebarLinks.vue'
+import { Icon } from '@iconify/vue'
 
 const links = [
   {
@@ -44,11 +45,11 @@ const accountLinks = [
   >
     <div class="flex h-16 items-center border-b px-2 lg:px-4 shrink-0 gap-1 justify-between">
       <button variant="outline" size="icon" class="w-8 h-8">
-        <iconify-icon icon="lucide:menu"></iconify-icon>
+        <Icon icon="lucide:menu" />
       </button>
 
       <button variant="outline" size="icon" class="w-8 h-8">
-        <iconify-icon icon="lucide:plus"></iconify-icon>
+        <Icon icon="lucide:plus" />
       </button>
     </div>
 
