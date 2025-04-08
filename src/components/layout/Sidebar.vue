@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import SidebarLinks from '@/components/layout/SidebarLinks.vue'
-import Button from '@/components/ui/button/Button.vue'
-import { Icon } from '@iconify/vue'
+import { Icon } from '@iconify/vue';
 
 const links = [
   {
